@@ -52,6 +52,7 @@ class PackageGenerator:
         self.main_xml = self.basename + '.wxs'
         self.main_o = self.basename + '.wixobj'
         self.add_to_path = jsondata.get('add_to_path', True)
+        self.path_ext = jsondata.get('path_ext', '')
         if 'arch' in jsondata:
             self.arch = jsondata['arch']
         else:
@@ -317,7 +318,7 @@ class PackageGenerator:
                     'Part': 'last',
                     'System': 'yes',
                     'Action': 'set',
-                    'Value': '[INSTALLDIR]',
+                    'Value': '[INSTALLDIR]{}'.format(self.path_ext),
                 })
             self.component_num += 1
             for f in cur_node.files:
