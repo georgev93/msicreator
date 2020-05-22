@@ -51,6 +51,7 @@ class PackageGenerator:
         self.desktop_shortcut = jsondata.get('desktop_shortcut', None)
         self.main_xml = self.basename + '.wxs'
         self.main_o = self.basename + '.wixobj'
+        self.add_to_path = jsondata.get('add_to_path', True)
         if 'arch' in jsondata:
             self.arch = jsondata['arch']
         else:
@@ -309,7 +310,7 @@ class PackageGenerator:
             self.feature_components[staging_dir].append(component_id)
             if self.arch == 64:
                 comp_xml_node.set('Win64', 'yes')
-            if platform.system() == "Windows" and self.component_num == 0:
+            if platform.system() == "Windows" and self.component_num == 0 and self.add_to_path is True:
                 ET.SubElement(comp_xml_node, 'Environment', {
                     'Id': 'Environment',
                     'Name': 'PATH',
