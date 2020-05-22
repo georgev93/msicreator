@@ -63,13 +63,13 @@ class PackageGenerator:
         if self.arch == 64:
             self.progfile_dir = 'ProgramFiles64Folder'
             if platform.system() == "Windows":
-                redist_glob = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\*\\MergeModules\\Microsoft_VC141_CRT_x64.msm'
+                redist_glob = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\20??\\Community\\VC\\Redist\\MSVC\\*\\MergeModules\\Microsoft_VC14?_CRT_x64.msm'
             else:
                 redist_glob = '/usr/share/msicreator/Microsoft_VC141_CRT_x64.msm'
         else:
             self.progfile_dir = 'ProgramFilesFolder'
             if platform.system() == "Windows":
-                redist_glob = 'C:\\Program Files\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\*\\MergeModules\\Microsoft_VC141_CRT_x86.msm'
+                redist_glob = 'C:\\Program Files\\Microsoft Visual Studio\\20??\\Community\\VC\\Redist\\MSVC\\*\\MergeModules\\Microsoft_VC14?_CRT_x86.msm'
             else:
                 redist_glob = '/usr/share/msicreator/Microsoft_VC141_CRT_x86.msm'
         trials = glob(redist_glob)
